@@ -1,5 +1,14 @@
 .form {
   padding: 1rem;
+  min-width: 400px;
+}
+
+.form h3 {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
 }
 
 .control {
@@ -20,17 +29,17 @@
   border-radius: 4px;
 }
 
-.control input:focus, .control textarea:focus {
+.control input:focus,
+.control textarea:focus {
   outline: 2px solid rgba(164, 167, 182, 0.3);
 }
 
 .actions {
-  margin-top: 1rem;
-  text-align: right;
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .actions button {
-  font: inherit;
   cursor: pointer;
   background-color: #3f51b5;
   color: white;

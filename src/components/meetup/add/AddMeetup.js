@@ -4,7 +4,10 @@ import { useState } from 'react'
 import classes from './AddMeetup.module.css'
 import FormLayout from 'components/layout/form/FormLayout'
 
-export default function AddMeetup() {
+// api
+import { addMeetup } from 'api/meetup'
+
+export default function AddMeetup({ onClose }) {
   const [input, setInput] = useState({
     title: '',
     address: '',
@@ -13,26 +16,29 @@ export default function AddMeetup() {
   })
 
   function changeHandler(e) {
-    const value = e.target.value
-    const name = e.target.name
+    let name = e.target.name
+    let value = e.target.value
     setInput({ ...input, [name]: value })
   }
 
   function submitHandler(e) {
     e.preventDefault()
+    addMeetup(input)
+    onClose()
   }
 
   return (
     <FormLayout>
       <form className={classes.form} onSubmit={submitHandler}>
-        <h3>Add new Meetup</h3>
+        <h3>New Meetup</h3>
+
         <div className={classes.control}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
-            required
             name="title"
             value={input.title}
+            required
             onChange={changeHandler}
           />
         </div>
@@ -41,9 +47,9 @@ export default function AddMeetup() {
           <label htmlFor="address">Address</label>
           <input
             type="text"
-            required
             name="address"
             value={input.address}
+            required
             onChange={changeHandler}
           />
         </div>
@@ -52,9 +58,9 @@ export default function AddMeetup() {
           <label htmlFor="image">Image URL</label>
           <input
             type="url"
-            required
             name="image"
             value={input.image}
+            required
             onChange={changeHandler}
           />
         </div>
@@ -63,7 +69,6 @@ export default function AddMeetup() {
           <label htmlFor="description">Description</label>
           <textarea
             type="text"
-            required
             name="description"
             row="5"
             value={input.description}
