@@ -1,7 +1,7 @@
 import { React } from 'react'
 
 // Components
-import Todocard from 'components/Todocard'
+import Todocard from 'components/todo/Todocard'
 import Box from '@material-ui/core/Box'
 
 // Data

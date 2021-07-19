@@ -1,4 +1,4 @@
-import MainNavigation from './MainNavigation'
+import MainNavigation from 'components/layout/nav/MainNavigation'
 import classes from './MainLayout.module.css'
 
 export default function MainLayout({ children }) {

@@ -1,15 +1,16 @@
 import { React, useState } from 'react'
 
-// Material UI
-import { makeStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import {
+  makeStyles,
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Typography,
+} from '@material-ui/core'
 
 // Components
-import ConfirmModal from 'components/ConfirmModal'
+import ConfirmModal from './ConfirmModal'
 
 export default function Todocard({ title, time }) {
   // STYLE
@@ -35,9 +36,7 @@ export default function Todocard({ title, time }) {
             {title}
           </Typography>
 
-          <Typography gutterBottom>
-            {time}
-          </Typography>
+          <Typography gutterBottom>{time}</Typography>
         </CardContent>
 
         <CardActions className={classes.action}>

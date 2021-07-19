@@ -1,7 +1,7 @@
 import React from 'react'
 
 // COMPONENTS
-import MeetupList from 'components/meetup/MeetupList'
+import MeetupList from 'components/meetup/list/MeetupList'
 
 const dummy_data = [
   {
