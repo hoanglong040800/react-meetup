@@ -2,12 +2,9 @@ import { useState } from 'react'
 
 // components
 import classes from './AddMeetup.module.css'
-import FormLayout from 'components/layout/form/FormLayout'
+import FormLayout from 'layout/form/FormLayout'
 
-// api
-import { addMeetup } from 'api/meetup'
-
-export default function AddMeetup({ onClose }) {
+export default function AddMeetup({ onSubmit }) {
   const [input, setInput] = useState({
     title: '',
     address: '',
@@ -23,8 +20,7 @@ export default function AddMeetup({ onClose }) {
 
   function submitHandler(e) {
     e.preventDefault()
-    addMeetup(input)
-    onClose()
+    onSubmit(input)
   }
 
   return (

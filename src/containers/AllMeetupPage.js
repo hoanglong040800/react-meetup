@@ -1,37 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { IconButton, Box } from '@material-ui/core'
 import { AddCircle } from '@material-ui/icons'
 
 import MeetupList from 'components/meetup/list/MeetupList'
 import AddMeetup from 'components/meetup/add/AddMeetup'
-import ModalLayout from 'components/layout/modal/ModalLayout'
+import ModalLayout from 'layout/modal/ModalLayout'
 
-const dummy_data = [
-  {
-    id: 'm1',
-    title:
-      'Meeting to brainstorm a small project Meeting to brainstorm a small project',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Meetupstreet 5, 12345 Meetup City',
-    description:
-      'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-    favorite: true,
-  },
-  {
-    id: 'm2',
-    title: 'Meeting with leturer',
-    image: 'https://i-dulich.vnecdn.net/2018/10/27/home-venice-italy_680x0.jpg',
-    address: 'Meetupstreet 5, 12345 Meetup City',
-    description:
-      'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-    favorite: false,
-  },
-]
+import { allMeetup, addMeetup } from 'api/meetup-api'
 
 export default function AllMeetupPage() {
   const [open, setOpen] = useState(false)
+  const [meetupList, setMeetupList] = useState([])
 
+  useEffect(() => {
+    fetchAllMeetup()
+  }, [])
+
+  // api
+  async function fetchAllMeetup() {
+    let data = await allMeetup()
+    setMeetupList(data)
+  }
+
+  async function addMeetupHandler(input) {
+    await addMeetup(input)
+    fetchAllMeetup()
+    closeHandler()
+  }
+
+  // modal
   function openHandler() {
     setOpen(true)
   }
@@ -52,13 +49,17 @@ export default function AllMeetupPage() {
         </Box>
       </Box>
 
-      <MeetupList list={dummy_data} />
+      {meetupList ? (
+        <MeetupList list={meetupList} />
+      ) : (
+        <p>You have no meetup</p>
+      )}
 
       {
         //new meetup modal
         open && (
           <ModalLayout open={open} onClose={closeHandler}>
-            <AddMeetup onClose={closeHandler} />
+            <AddMeetup onSubmit={addMeetupHandler} />
           </ModalLayout>
         )
       }

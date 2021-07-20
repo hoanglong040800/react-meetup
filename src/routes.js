@@ -7,7 +7,7 @@ import FavoritePage from 'containers/FavoritePage'
 import TodoPage from 'containers/TodoPage'
 
 // COMPONENT
-import MainLayout from 'components/layout/main/MainLayout'
+import MainLayout from 'layout/main/MainLayout'
 
 function App() {
   return (

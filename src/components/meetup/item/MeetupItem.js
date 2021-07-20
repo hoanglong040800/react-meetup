@@ -25,12 +25,16 @@ export default function MeetupItem({ item }) {
           </div>
 
           <div className={classes.actions}>
-            <IconButton color="primary" onClick={toggleFav}>
-              {
-                // favorite icon
-                fav ? <Star /> : <StarBorder />
-              }
-            </IconButton>
+            <div>
+              <IconButton color="primary" onClick={toggleFav}>
+                {
+                  // favorite icon
+                  fav ? <Star /> : <StarBorder />
+                }
+              </IconButton>
+
+              
+            </div>
 
             <IconButton color="primary">
               <ArrowForward />
