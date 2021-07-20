@@ -14,8 +14,7 @@
   transition: 0.3s;
 }
 
-.item:hover .del,
-.item:hover .forward {
+.item:hover .icon {
   visibility: visible;
   opacity: 1;
   transition: 0.3s;
@@ -60,18 +59,20 @@
   overflow: hidden;
 }
 
-.del {
+.sideAction{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+.icon {
   visibility: hidden;
+  padding: 8px !important;
   opacity: 0;
-  margin-top: 8px !important;
 }
 
 .actions {
   display: flex;
   justify-content: space-between;
-}
-
-.forward{
-  opacity: 0;
-  visibility: hidden;
 }

@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { IconButton } from '@material-ui/core'
-import { Star, StarBorder, ArrowForward, Clear } from '@material-ui/icons'
+import {
+  Star,
+  StarBorder,
+  ArrowForward,
+  Clear,
+  EditOutlined,
+} from '@material-ui/icons'
 
 import classes from './MeetupItem.module.css'
 
@@ -23,9 +29,15 @@ export default function MeetupItem({ item }) {
             <div className={classes.title}>
               <h3>{item.title}</h3>
 
-              <IconButton color="secondary" className={classes.del}>
-                <Clear fontSize="small" />
-              </IconButton>
+              <div className={classes.sideAction}>
+                <IconButton color="secondary" className={classes.icon}>
+                  <Clear fontSize="small" />
+                </IconButton>
+
+                <IconButton color="primary" className={classes.icon}>
+                  <EditOutlined fontSize="small" />
+                </IconButton>
+              </div>
             </div>
 
             <address>{item.address}</address>
@@ -39,7 +51,7 @@ export default function MeetupItem({ item }) {
               }
             </IconButton>
 
-            <IconButton color="primary" className={classes.forward}>
+            <IconButton color="primary" className={classes.icon}>
               <ArrowForward />
             </IconButton>
           </div>
