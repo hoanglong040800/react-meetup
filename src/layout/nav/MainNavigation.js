@@ -1,13 +1,12 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { makeStyles, AppBar, Toolbar, Box } from '@material-ui/core'
 
-// MATERIAL UI
-import { makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Box from '@material-ui/core/Box'
+import FavContext from 'context/fav-context'
 
 export default function MainNavigation() {
   const classes = useStyles()
+  const favCxt = useContext(FavContext)
 
   return (
     <nav className={classes.root}>
@@ -29,7 +28,7 @@ export default function MainNavigation() {
             </Link>
 
             <Link to="/favorite" className={classes.link}>
-              Favorite
+              Favorite {favCxt.totalFavs ? `(${favCxt.totalFavs})` : null}
             </Link>
 
             <Link to="/todo" className={classes.link}>

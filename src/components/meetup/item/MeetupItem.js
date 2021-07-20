@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { IconButton } from '@material-ui/core'
 import {
   Star,
@@ -9,16 +9,20 @@ import {
 } from '@material-ui/icons'
 
 import classes from './MeetupItem.module.css'
+import 'assets/css/animation.css'
+import FavContext from 'context/fav-context'
 
 export default function MeetupItem({ item, onDelete }) {
-  const [fav, setFav] = useState(item.favorite)
+  const favCtx = useContext(FavContext)
 
-  function toggleFav() {
-    setFav(!fav)
+  const isFav = favCtx.isFav(item.id)
+
+  function toggleFavHandler() {
+    isFav ? favCtx.rmFav(item.id) : favCtx.addFav({ ...item })
   }
 
   return (
-    <div className={classes.item}>
+    <div className={`${classes.item} fade-in-bottom`}>
       <div className={classes.layout}>
         <div className={classes.image}>
           <img src={item.image} alt={item.title} />
@@ -32,13 +36,13 @@ export default function MeetupItem({ item, onDelete }) {
               <div className={classes.sideAction}>
                 <IconButton
                   color="secondary"
-                  className={classes.icon}
+                  className={classes.hideIcon}
                   onClick={() => onDelete(item.id)}
                 >
                   <Clear fontSize="small" />
                 </IconButton>
 
-                <IconButton color="primary" className={classes.icon}>
+                <IconButton color="primary" className={classes.hideIcon}>
                   <EditOutlined fontSize="small" />
                 </IconButton>
               </div>
@@ -48,14 +52,14 @@ export default function MeetupItem({ item, onDelete }) {
           </div>
 
           <div className={classes.actions}>
-            <IconButton onClick={toggleFav}>
-              {
-                // favorite icon
-                fav ? <Star color="primary" /> : <StarBorder />
-              }
+            <IconButton
+              className={isFav ? classes.icon : classes.hideIcon}
+              onClick={toggleFavHandler}
+            >
+              {isFav ? <Star color="primary" /> : <StarBorder />}
             </IconButton>
 
-            <IconButton color="primary" className={classes.icon}>
+            <IconButton color="primary" className={classes.hideIcon}>
               <ArrowForward />
             </IconButton>
           </div>

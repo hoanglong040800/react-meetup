@@ -14,7 +14,7 @@
   transition: 0.3s;
 }
 
-.item:hover .icon {
+.item:hover .hideIcon {
   visibility: visible;
   opacity: 1;
   transition: 0.3s;
@@ -59,7 +59,7 @@
   overflow: hidden;
 }
 
-.sideAction{
+.sideAction {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -67,6 +67,10 @@
 }
 
 .icon {
+  padding: 8px !important;
+}
+
+.hideIcon {
   visibility: hidden;
   padding: 8px !important;
   opacity: 0;

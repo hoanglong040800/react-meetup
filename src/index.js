@@ -1,11 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './routes';
-import './index.css'
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import App from './routes'
+import 'assets/css/index.css'
+import { FavContextProvider } from 'context/fav-context'
 
 ReactDOM.render(
-  // <React.StrictMode>
-    <App />,
-  // </React.StrictMode>,
+  <FavContextProvider>
+    <App />
+  </FavContextProvider>,
   document.getElementById('root')
-);
+)
