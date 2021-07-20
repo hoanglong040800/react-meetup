@@ -21,4 +21,13 @@ async function allMeetup() {
   return multiObjToArrObj(data)
 }
 
-export { addMeetup, allMeetup }
+async function deleteMeetup(id) {
+  await fetch(
+    `https://react-meetup-9027b-default-rtdb.asia-southeast1.firebasedatabase.app/meetups/${id}.json`,
+    {
+      method: 'DELETE',
+    }
+  )
+}
+
+export { addMeetup, allMeetup, deleteMeetup }

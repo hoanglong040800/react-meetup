@@ -10,7 +10,7 @@ import {
 
 import classes from './MeetupItem.module.css'
 
-export default function MeetupItem({ item }) {
+export default function MeetupItem({ item, onDelete }) {
   const [fav, setFav] = useState(item.favorite)
 
   function toggleFav() {
@@ -30,7 +30,11 @@ export default function MeetupItem({ item }) {
               <h3>{item.title}</h3>
 
               <div className={classes.sideAction}>
-                <IconButton color="secondary" className={classes.icon}>
+                <IconButton
+                  color="secondary"
+                  className={classes.icon}
+                  onClick={() => onDelete(item.id)}
+                >
                   <Clear fontSize="small" />
                 </IconButton>
 
@@ -44,10 +48,10 @@ export default function MeetupItem({ item }) {
           </div>
 
           <div className={classes.actions}>
-            <IconButton color="primary" onClick={toggleFav}>
+            <IconButton onClick={toggleFav}>
               {
                 // favorite icon
-                fav ? <Star /> : <StarBorder />
+                fav ? <Star color="primary" /> : <StarBorder />
               }
             </IconButton>
 

@@ -1,5 +1,5 @@
 .item {
-  margin: 10px;
+  margin: 10px 12px;
   width: 380px;
   height: 180px;
   border: 1px solid #c6c6c6;
@@ -10,7 +10,7 @@
 }
 
 .item:hover {
-  transform: scale(1.05, 1.05);
+  transform: scale(1.1, 1.1);
   transition: 0.3s;
 }
 
