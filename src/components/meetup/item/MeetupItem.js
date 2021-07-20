@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { IconButton } from '@material-ui/core'
-import { Star, StarBorder, ArrowForward } from '@material-ui/icons'
+import { Star, StarBorder, ArrowForward, Clear } from '@material-ui/icons'
 
 import classes from './MeetupItem.module.css'
 
@@ -20,23 +20,26 @@ export default function MeetupItem({ item }) {
 
         <div className={classes.info}>
           <div className={classes.content}>
-            <h3>{item.title}</h3>
+            <div className={classes.title}>
+              <h3>{item.title}</h3>
+
+              <IconButton color="secondary" className={classes.del}>
+                <Clear fontSize="small" />
+              </IconButton>
+            </div>
+
             <address>{item.address}</address>
           </div>
 
           <div className={classes.actions}>
-            <div>
-              <IconButton color="primary" onClick={toggleFav}>
-                {
-                  // favorite icon
-                  fav ? <Star /> : <StarBorder />
-                }
-              </IconButton>
+            <IconButton color="primary" onClick={toggleFav}>
+              {
+                // favorite icon
+                fav ? <Star /> : <StarBorder />
+              }
+            </IconButton>
 
-              
-            </div>
-
-            <IconButton color="primary">
+            <IconButton color="primary" className={classes.forward}>
               <ArrowForward />
             </IconButton>
           </div>

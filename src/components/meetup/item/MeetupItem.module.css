@@ -6,6 +6,19 @@
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 2px 2px 3px #dadada;
+  cursor: pointer;
+}
+
+.item:hover {
+  transform: scale(1.05, 1.05);
+  transition: 0.3s;
+}
+
+.item:hover .del,
+.item:hover .forward {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s;
 }
 
 .layout {
@@ -27,21 +40,38 @@
 
 .info {
   width: 60%;
-  padding: 10px 15px;
+  padding: 0 15px;
 }
 
 .content {
   height: 70%;
 }
 
-.content h3 {
+.title {
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title h3 {
+  width: 70%;
   font-size: 1rem;
-  height: 35%;
   overflow: hidden;
+}
+
+.del {
+  visibility: hidden;
+  opacity: 0;
+  margin-top: 8px !important;
 }
 
 .actions {
   display: flex;
   justify-content: space-between;
-  height: 30%;
+}
+
+.forward{
+  opacity: 0;
+  visibility: hidden;
 }
