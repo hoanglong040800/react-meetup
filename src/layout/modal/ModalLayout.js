@@ -1,4 +1,4 @@
-import { makeStyles, Modal, Backdrop, Fade } from '@material-ui/core'
+import { makeStyles, Modal, Backdrop, Fade, Box } from '@material-ui/core'
 
 export default function ModalLayout({ open, onClose, children }) {
   const classes = useStyles()
@@ -15,9 +15,7 @@ export default function ModalLayout({ open, onClose, children }) {
       }}
     >
       <Fade in={open}>
-        <div className={classes.paper}>
-          {children}
-        </div>
+        <Box position="absolute">{children}</Box>
       </Fade>
     </Modal>
   )
@@ -28,9 +26,5 @@ const useStyles = makeStyles({
     display: 'flex',
     marginTop: 50,
     justifyContent: 'center',
-  },
-
-  paper: {
-    position: 'absolute',
   },
 })

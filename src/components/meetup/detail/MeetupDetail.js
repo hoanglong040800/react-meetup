@@ -3,7 +3,8 @@ import {
   Clear,
   EditOutlined,
   DeleteOutline,
-  StarOutline,
+  Star,
+  StarBorder,
   AccessAlarmOutlined,
   RoomOutlined,
   NoteOutlined,
@@ -11,13 +12,19 @@ import {
 
 import classes from './MeetupDetail.module.css'
 
-export default function MeetupDetail({ item }) {
+export default function MeetupDetail({
+  item,
+  isFav,
+  toggleFav,
+  onClose,
+  onDelete,
+}) {
   return (
     <div className={classes.root}>
       <div className={classes.image}>
         <img src={item.image} alt={item.title} />
 
-        <IconButton className={classes.close}>
+        <IconButton className={classes.close} onClick={onClose}>
           <Clear fontSize="small" color="#fff" />
         </IconButton>
       </div>
@@ -28,8 +35,8 @@ export default function MeetupDetail({ item }) {
             <h3>{item.title}</h3>
 
             <div>
-              <IconButton>
-                <StarOutline />
+              <IconButton onClick={toggleFav}>
+                {isFav ? <Star color="primary" /> : <StarBorder />}
               </IconButton>
             </div>
           </div>
@@ -39,7 +46,7 @@ export default function MeetupDetail({ item }) {
               <EditOutlined fontSize="small" />
             </IconButton>
 
-            <IconButton color="secondary">
+            <IconButton color="secondary" onClick={() => onDelete(item.id)}>
               <DeleteOutline fontSize="small" />
             </IconButton>
           </Box>
@@ -48,7 +55,7 @@ export default function MeetupDetail({ item }) {
         <Box display="flex" alignItems="center">
           <AccessAlarmOutlined fontSize="small" className={classes.icon} />
 
-          <p>7:30 PM 20/7/2021</p>
+          <p>{item.time}</p>
         </Box>
 
         <Box display="flex" alignItems="center">

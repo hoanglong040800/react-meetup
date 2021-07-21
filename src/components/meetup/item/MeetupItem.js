@@ -33,7 +33,7 @@ export default function MeetupItem({ item, onDelete }) {
   }
 
   function closeHandler() {
-    setOpen(true)
+    setOpen(false)
   }
 
   return (
@@ -64,7 +64,7 @@ export default function MeetupItem({ item, onDelete }) {
                 </div>
               </div>
 
-              <address>{item.address}</address>
+              <address>{item.time}</address>
             </div>
 
             <div className={classes.actions}>
@@ -89,7 +89,13 @@ export default function MeetupItem({ item, onDelete }) {
 
       {open && (
         <ModalLayout open={open} onClose={closeHandler}>
-          <MeetupDetail item={item} />
+          <MeetupDetail
+            item={item}
+            isFav={isFav}
+            toggleFav={toggleFavHandler}
+            onClose={closeHandler}
+            onDelete={onDelete}
+          />
         </ModalLayout>
       )}
     </>
