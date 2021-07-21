@@ -21,7 +21,8 @@ export default function MeetupItem({ item, onDelete }) {
 
   const isFav = favCtx.isFav(item.id)
 
-  function toggleFavHandler() {
+  function toggleFavHandler(e) {
+    e.stopPropagation()
     isFav ? favCtx.rmFav(item.id) : favCtx.addFav({ ...item })
   }
 
@@ -38,7 +39,7 @@ export default function MeetupItem({ item, onDelete }) {
 
   return (
     <>
-      <div className={`${classes.item} fade-in-bottom`}>
+      <div className={`${classes.item} fade-in-bottom`} onClick={openHandler}>
         <div className={classes.layout}>
           <div className={classes.image}>
             <img src={item.image} alt={item.title} />
@@ -73,14 +74,6 @@ export default function MeetupItem({ item, onDelete }) {
                 onClick={toggleFavHandler}
               >
                 {isFav ? <Star color="primary" /> : <StarBorder />}
-              </IconButton>
-
-              <IconButton
-                color="primary"
-                className={classes.hideIcon}
-                onClick={openHandler}
-              >
-                <ArrowForward />
               </IconButton>
             </div>
           </div>
