@@ -46,7 +46,7 @@ export default function MeetupDetail({
               <EditOutlined fontSize="small" />
             </IconButton>
 
-            <IconButton color="secondary" onClick={() => onDelete(item.id)}>
+            <IconButton color="secondary" onClick={onDelete}>
               <DeleteOutline fontSize="small" />
             </IconButton>
           </Box>

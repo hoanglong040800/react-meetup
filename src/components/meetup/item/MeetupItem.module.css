@@ -1,7 +1,7 @@
 .item {
   margin: 10px 12px;
   width: 380px;
-  height: 180px;
+  height: 130px;
   border: 1px solid #c6c6c6;
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -39,7 +39,7 @@
 
 .info {
   width: 60%;
-  padding: 0 15px;
+  padding: 0 15px 5px 15px;
 }
 
 .content {
@@ -47,7 +47,7 @@
 }
 
 .title {
-  height: 60%;
+  height: 70%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -67,7 +67,7 @@
 }
 
 .icon {
-  padding: 8px !important;
+  padding: 5px !important;
 }
 
 .hideIcon {
@@ -79,4 +79,5 @@
 .actions {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }

@@ -1,19 +1,13 @@
 import { useContext, useState } from 'react'
 import { IconButton } from '@material-ui/core'
-import {
-  Star,
-  StarBorder,
-  ArrowForward,
-  Clear,
-  EditOutlined,
-  SettingsInputComponentTwoTone,
-} from '@material-ui/icons'
+import { Star, StarBorder, Clear, EditOutlined } from '@material-ui/icons'
 
 import classes from './MeetupItem.module.css'
 import 'assets/css/animation.css'
 import FavContext from 'context/fav-context'
 import ModalLayout from 'layout/modal/ModalLayout'
 import MeetupDetail from '../detail/MeetupDetail'
+import ConfirmModal from 'components/common/ConfirmModal'
 
 export default function MeetupItem({ item, onDelete }) {
   // favorite context
@@ -28,6 +22,7 @@ export default function MeetupItem({ item, onDelete }) {
 
   // modal
   const [open, setOpen] = useState(false)
+  const [delOpen, setDelOpen] = useState(false)
 
   function openHandler() {
     setOpen(true)
@@ -35,6 +30,18 @@ export default function MeetupItem({ item, onDelete }) {
 
   function closeHandler() {
     setOpen(false)
+  }
+
+  function delOpenHandler() {
+    setDelOpen(true)
+  }
+
+  function delCloseHandler() {
+    setDelOpen(false)
+  }
+
+  function confirmHandler() {
+    onDelete(item.id)
   }
 
   return (
@@ -54,7 +61,10 @@ export default function MeetupItem({ item, onDelete }) {
                   <IconButton
                     color="secondary"
                     className={classes.hideIcon}
-                    onClick={() => onDelete(item.id)}
+                    onClick={e => {
+                      e.stopPropagation()
+                      delOpenHandler()
+                    }}
                   >
                     <Clear fontSize="small" />
                   </IconButton>
@@ -64,11 +74,11 @@ export default function MeetupItem({ item, onDelete }) {
                   </IconButton>
                 </div>
               </div>
-
-              <address>{item.time}</address>
             </div>
 
             <div className={classes.actions}>
+              <address>{item.time}</address>
+
               <IconButton
                 className={isFav ? classes.icon : classes.hideIcon}
                 onClick={toggleFavHandler}
@@ -87,9 +97,17 @@ export default function MeetupItem({ item, onDelete }) {
             isFav={isFav}
             toggleFav={toggleFavHandler}
             onClose={closeHandler}
-            onDelete={onDelete}
+            onDelete={delOpenHandler}
           />
         </ModalLayout>
+      )}
+
+      {delOpen && (
+        <ConfirmModal
+          open={delOpenHandler}
+          onCancel={delCloseHandler}
+          onConfirm={confirmHandler}
+        />
       )}
     </>
   )
