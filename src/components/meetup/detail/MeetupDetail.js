@@ -4,6 +4,9 @@ import {
   EditOutlined,
   DeleteOutline,
   StarOutline,
+  AccessAlarmOutlined,
+  RoomOutlined,
+  NoteOutlined,
 } from '@material-ui/icons'
 
 import classes from './MeetupDetail.module.css'
@@ -20,7 +23,6 @@ export default function MeetupDetail({ item }) {
       </div>
 
       <div className={classes.content}>
-        {/* title & actions */}
         <div className={classes.header}>
           <div className={classes.title}>
             <h3>{item.title}</h3>
@@ -42,6 +44,24 @@ export default function MeetupDetail({ item }) {
             </IconButton>
           </Box>
         </div>
+
+        <Box display="flex" alignItems="center">
+          <AccessAlarmOutlined fontSize="small" className={classes.icon} />
+
+          <p>7:30 PM 20/7/2021</p>
+        </Box>
+
+        <Box display="flex" alignItems="center">
+          <RoomOutlined fontSize="small" className={classes.icon} />
+
+          <p>{item.address}</p>
+        </Box>
+
+        <Box display="flex" alignItems="center">
+          <NoteOutlined fontSize="small" className={classes.icon} />
+
+          <p>{item.description}</p>
+        </Box>
       </div>
     </div>
   )

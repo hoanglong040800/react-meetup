@@ -1,5 +1,5 @@
 .root {
-  width: 500px;
+  width: 400px;
   background-color: #fff;
   border-radius: 10px;
 }
@@ -8,8 +8,8 @@
   position: relative;
   top: 0;
   width: 100%;
-  height: 100px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 150px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .image img {
@@ -33,7 +33,7 @@
 
 .content {
   width: 100%;
-  padding: 15px 10px;
+  padding: 20px 15px;
 }
 
 .header {
@@ -44,5 +44,12 @@
 .title {
   display: flex;
   width: 80%;
-  background-color: lightcoral;
+}
+
+.icon{
+  margin: 0 15px 0 0;
+}
+
+.text{
+  font-style: italic;
 }
