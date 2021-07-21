@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './routes'
+import App from './App'
 import 'assets/css/index.css'
 import { FavContextProvider } from 'context/fav-context'
 
