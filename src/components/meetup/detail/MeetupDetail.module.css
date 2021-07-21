@@ -1,31 +1,48 @@
 .root {
-    width: 500px;
-    background-color: #fff;
-    border-radius: 10px;
+  width: 500px;
+  background-color: #fff;
+  border-radius: 10px;
 }
 
-.image{
-    position: relative;
-    top: 0;
-    width: 100%;
-    height: 200px;
+.image {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.image img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
 }
 
-.close{
-    position: absolute !important;
-    top: 0px;
-    right: 20px;
-    background-color: rgba(175, 175, 175, 0.5) !important;
-    z-index: 1;
+.close {
+  position: absolute !important;
+  top: 5px;
+  right: 20px;
+  background-color: rgba(175, 175, 175, 0.5) !important;
+  z-index: 1;
 }
 
-.close:hover{
-    background-color: rgba(145, 145, 145, 0.7) !important;
+.close:hover {
+  background-color: rgba(145, 145, 145, 0.7) !important;
+}
+
+.content {
+  width: 100%;
+  padding: 15px 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+  width: 80%;
+  background-color: lightcoral;
 }

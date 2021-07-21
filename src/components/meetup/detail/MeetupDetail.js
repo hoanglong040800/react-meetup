@@ -1,5 +1,10 @@
-import { IconButton } from '@material-ui/core'
-import { Clear } from '@material-ui/icons'
+import { Box, IconButton } from '@material-ui/core'
+import {
+  Clear,
+  EditOutlined,
+  DeleteOutline,
+  StarOutline,
+} from '@material-ui/icons'
 
 import classes from './MeetupDetail.module.css'
 
@@ -10,13 +15,32 @@ export default function MeetupDetail({ item }) {
         <img src={item.image} alt={item.title} />
 
         <IconButton className={classes.close}>
-          <Clear fontSize="small" color="#fff"/>
+          <Clear fontSize="small" color="#fff" />
         </IconButton>
       </div>
 
       <div className={classes.content}>
-        <div className={classes.title}>
-          <h3>{item.title}</h3>
+        {/* title & actions */}
+        <div className={classes.header}>
+          <div className={classes.title}>
+            <h3>{item.title}</h3>
+
+            <div>
+              <IconButton>
+                <StarOutline />
+              </IconButton>
+            </div>
+          </div>
+
+          <Box display="flex" flexDirection="column">
+            <IconButton color="primary">
+              <EditOutlined fontSize="small" />
+            </IconButton>
+
+            <IconButton color="secondary">
+              <DeleteOutline fontSize="small" />
+            </IconButton>
+          </Box>
         </div>
       </div>
     </div>
