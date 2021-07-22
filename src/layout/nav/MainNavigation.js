@@ -1,12 +1,8 @@
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { makeStyles, AppBar, Toolbar, Box } from '@material-ui/core'
 
-import FavContext from 'context/fav-context'
-
 export default function MainNavigation() {
   const classes = useStyles()
-  const favCxt = useContext(FavContext)
 
   return (
     <nav className={classes.root}>

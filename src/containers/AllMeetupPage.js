@@ -14,19 +14,21 @@ export default function AllMeetupPage() {
   const [meetupList, setMeetupList] = useState([])
   const favCtx = useContext(FavContext)
   const [isFavFilter, setIsFavFilter] = useState(false)
+  const [isLoad, setIsLoad] = useState(false)
 
   useEffect(() => {
+    function fetchByFilter() {
+      isFavFilter ? setMeetupList(favCtx.favs) : fetchAllMeetup()
+      setIsLoad(false)
+    }
+
     fetchByFilter()
-  }, [isFavFilter, addMeetupHandler, deleteMeetup, editMeetupHandler])
+  }, [isFavFilter, favCtx.favs, isLoad])
 
   // filter
 
   function toggleFavFilter() {
     setIsFavFilter(!isFavFilter)
-  }
-
-  function fetchByFilter() {
-    isFavFilter ? setMeetupList(favCtx.favs) : fetchAllMeetup()
   }
 
   // api
@@ -39,14 +41,17 @@ export default function AllMeetupPage() {
   async function addMeetupHandler(input) {
     await addMeetup(input)
     closeHandler()
+    setIsLoad(true)
   }
 
   async function deleteMeetupHandler(id) {
     await deleteMeetup(id)
+    setIsLoad(true)
   }
 
   async function editMeetupHandler(id, input) {
     await editMeetup(id, input)
+    setIsLoad(true)
   }
 
   // modal
