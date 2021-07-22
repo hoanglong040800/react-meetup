@@ -13,12 +13,24 @@ export default function AllMeetupPage() {
   const [open, setOpen] = useState(false)
   const [meetupList, setMeetupList] = useState([])
   const favCtx = useContext(FavContext)
+  const [isFavFilter, setIsFavFilter] = useState(false)
 
   useEffect(() => {
-    fetchAllMeetup()
-  }, [])
+    fetchByFilter()
+  }, [isFavFilter, addMeetupHandler, deleteMeetup, editMeetupHandler])
+
+  // filter
+
+  function toggleFavFilter() {
+    setIsFavFilter(!isFavFilter)
+  }
+
+  function fetchByFilter() {
+    isFavFilter ? setMeetupList(favCtx.favs) : fetchAllMeetup()
+  }
 
   // api
+
   async function fetchAllMeetup() {
     let data = await allMeetup()
     setMeetupList(data)
@@ -26,18 +38,15 @@ export default function AllMeetupPage() {
 
   async function addMeetupHandler(input) {
     await addMeetup(input)
-    fetchAllMeetup()
     closeHandler()
   }
 
   async function deleteMeetupHandler(id) {
     await deleteMeetup(id)
-    fetchAllMeetup()
   }
 
   async function editMeetupHandler(id, input) {
     await editMeetup(id, input)
-    fetchAllMeetup()
   }
 
   // modal
@@ -62,7 +71,11 @@ export default function AllMeetupPage() {
       </Box>
 
       <Box mb={2}>
-        <Button variant="outlined" color="primary">
+        <Button
+          variant={isFavFilter ? 'contained' : 'outlined'}
+          color="primary"
+          onClick={toggleFavFilter}
+        >
           Favorites: ({favCtx.totalFavs})
         </Button>
       </Box>
