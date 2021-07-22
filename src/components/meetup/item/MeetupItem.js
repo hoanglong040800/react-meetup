@@ -49,7 +49,7 @@ export default function MeetupItem({ item, onDelete }) {
       <div className={`${classes.item} fade-in-bottom`} onClick={openHandler}>
         <div className={classes.layout}>
           <div className={classes.image}>
-            <img src={item.image} alt={item.title} />
+            <img src={item.imageUrl} alt={item.title} />
           </div>
 
           <div className={classes.info}>
@@ -77,7 +77,7 @@ export default function MeetupItem({ item, onDelete }) {
             </div>
 
             <div className={classes.actions}>
-              <address>{item.time}</address>
+              <address>{item.datetime}</address>
 
               <IconButton
                 className={isFav ? classes.icon : classes.hideIcon}

@@ -7,9 +7,9 @@ import FormLayout from 'layout/form/FormLayout'
 export default function AddMeetup({ onSubmit }) {
   const [input, setInput] = useState({
     title: '',
-    time: '',
+    datetime: '',
     address: '',
-    image: '',
+    imageUrl: '',
     description: '',
   })
 
@@ -41,10 +41,10 @@ export default function AddMeetup({ onSubmit }) {
         </div>
 
         <div className={classes.control}>
-          <label htmlFor="time">Time</label>
+          <label htmlFor="time">Date & Time</label>
           <input
             type="datetime-local"
-            name="time"
+            name="datetime"
             value={input.time}
             required
             onChange={changeHandler}
@@ -66,7 +66,7 @@ export default function AddMeetup({ onSubmit }) {
           <label htmlFor="image">Image URL</label>
           <input
             type="url"
-            name="image"
+            name="imageUrl"
             value={input.image}
             required
             onChange={changeHandler}

@@ -22,7 +22,7 @@ export default function MeetupDetail({
   return (
     <div className={classes.root}>
       <div className={classes.image}>
-        <img src={item.image} alt={item.title} />
+        <img src={item.imageUrl} alt={item.title} />
 
         <IconButton className={classes.close} onClick={onClose}>
           <Clear fontSize="small" color="#fff" />
@@ -55,7 +55,7 @@ export default function MeetupDetail({
         <Box display="flex" alignItems="center">
           <AccessAlarmOutlined fontSize="small" className={classes.icon} />
 
-          <p>{item.time}</p>
+          <p>{item.datetime}</p>
         </Box>
 
         <Box display="flex" alignItems="center">
