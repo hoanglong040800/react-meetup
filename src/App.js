@@ -6,6 +6,7 @@ import FavoritePage from 'containers/FavoritePage'
 import TodoPage from 'containers/TodoPage'
 import MainLayout from 'layout/main/MainLayout'
 import { FavContextProvider } from 'context/fav-context'
+import 'assets/css/index.css'
 
 function App() {
   return (
