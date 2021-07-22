@@ -42,6 +42,7 @@ export default function MeetupItem({ item, onDelete }) {
 
   function confirmHandler() {
     onDelete(item.id)
+    favCtx.rmFav(item.id)
   }
 
   return (
