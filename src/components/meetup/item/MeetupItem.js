@@ -57,6 +57,10 @@ export default function MeetupItem({ item, onDelete, onEdit }) {
 
   function editSubmitHandler(input) {
     onEdit(item.id, input)
+    favCtx.rmFav(item.id)
+    let newInput = input
+    newInput.id = item.id
+    favCtx.addFav({ ...newInput })
     editCloseHandler()
   }
 
