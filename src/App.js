@@ -1,12 +1,11 @@
 import React from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 
+import 'assets/css/index.css'
 import AllMeetupPage from 'containers/AllMeetupPage'
-import FavoritePage from 'containers/FavoritePage'
 import TodoPage from 'containers/TodoPage'
 import MainLayout from 'layout/main/MainLayout'
 import { FavContextProvider } from 'context/fav-context'
-import 'assets/css/index.css'
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <MainLayout>
           <Switch>
             <Route path="/" component={AllMeetupPage} exact />
-            <Route path="/favorite" component={FavoritePage} />
             <Route path="/todo" component={TodoPage} />
           </Switch>
         </MainLayout>

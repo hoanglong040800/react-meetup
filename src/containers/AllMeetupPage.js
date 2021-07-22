@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { IconButton, Box } from '@material-ui/core'
+import { useState, useEffect, useContext } from 'react'
+import { IconButton, Box, Button } from '@material-ui/core'
 import { AddCircle } from '@material-ui/icons'
 
 import MeetupList from 'components/meetup/list/MeetupList'
@@ -7,10 +7,12 @@ import AddMeetup from 'components/meetup/add/AddMeetup'
 import ModalLayout from 'layout/modal/ModalLayout'
 
 import { allMeetup, addMeetup, deleteMeetup, editMeetup } from 'api/meetup-api'
+import FavContext from 'context/fav-context'
 
 export default function AllMeetupPage() {
   const [open, setOpen] = useState(false)
   const [meetupList, setMeetupList] = useState([])
+  const favCtx = useContext(FavContext)
 
   useEffect(() => {
     fetchAllMeetup()
@@ -59,8 +61,18 @@ export default function AllMeetupPage() {
         </Box>
       </Box>
 
+      <Box mb={2}>
+        <Button variant="outlined" color="primary">
+          Favorites: ({favCtx.totalFavs})
+        </Button>
+      </Box>
+
       {meetupList ? (
-        <MeetupList list={meetupList} onDelete={deleteMeetupHandler} onEdit={editMeetupHandler} />
+        <MeetupList
+          list={meetupList}
+          onDelete={deleteMeetupHandler}
+          onEdit={editMeetupHandler}
+        />
       ) : (
         <p>You have no meetup</p>
       )}

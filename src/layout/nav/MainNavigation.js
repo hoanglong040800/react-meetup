@@ -27,10 +27,6 @@ export default function MainNavigation() {
               All Meetup
             </Link>
 
-            <Link to="/favorite" className={classes.link}>
-              Favorite {favCxt.totalFavs ? `(${favCxt.totalFavs})` : null}
-            </Link>
-
             <Link to="/todo" className={classes.link}>
               Todo
             </Link>
