@@ -8,8 +8,9 @@ import FavContext from 'context/fav-context'
 import ModalLayout from 'layout/modal/ModalLayout'
 import MeetupDetail from '../detail/MeetupDetail'
 import ConfirmModal from 'components/common/ConfirmModal'
+import EditMeetup from 'components/meetup/edit/EditMeetup'
 
-export default function MeetupItem({ item, onDelete }) {
+export default function MeetupItem({ item, onDelete, onEdit }) {
   // favorite context
   const favCtx = useContext(FavContext)
 
@@ -23,6 +24,7 @@ export default function MeetupItem({ item, onDelete }) {
   // modal
   const [open, setOpen] = useState(false)
   const [delOpen, setDelOpen] = useState(false)
+  const [editOpen, setEditOpen] = useState(false)
 
   function openHandler() {
     setOpen(true)
@@ -43,6 +45,19 @@ export default function MeetupItem({ item, onDelete }) {
   function confirmHandler() {
     onDelete(item.id)
     favCtx.rmFav(item.id)
+  }
+
+  function editOpenHandler() {
+    setEditOpen(true)
+  }
+
+  function editCloseHandler() {
+    setEditOpen(false)
+  }
+
+  function editSubmitHandler(input) {
+    onEdit(item.id, input)
+    editCloseHandler()
   }
 
   return (
@@ -70,7 +85,14 @@ export default function MeetupItem({ item, onDelete }) {
                     <Clear fontSize="small" />
                   </IconButton>
 
-                  <IconButton color="primary" className={classes.hideIcon}>
+                  <IconButton
+                    color="primary"
+                    className={classes.hideIcon}
+                    onClick={e => {
+                      e.stopPropagation()
+                      editOpenHandler()
+                    }}
+                  >
                     <EditOutlined fontSize="small" />
                   </IconButton>
                 </div>
@@ -99,6 +121,7 @@ export default function MeetupItem({ item, onDelete }) {
             toggleFav={toggleFavHandler}
             onClose={closeHandler}
             onDelete={delOpenHandler}
+            onEdit={editOpenHandler}
           />
         </ModalLayout>
       )}
@@ -109,6 +132,12 @@ export default function MeetupItem({ item, onDelete }) {
           onCancel={delCloseHandler}
           onConfirm={confirmHandler}
         />
+      )}
+
+      {editOpen && (
+        <ModalLayout open={editOpen} onClose={editCloseHandler}>
+          <EditMeetup item={item} onSubmit={editSubmitHandler} />
+        </ModalLayout>
       )}
     </>
   )

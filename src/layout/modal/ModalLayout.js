@@ -1,4 +1,5 @@
-import { Modal, Backdrop, Fade, Box } from '@material-ui/core'
+import { Modal, Backdrop, Fade, Box, IconButton } from '@material-ui/core'
+import { Clear } from '@material-ui/icons'
 
 import classes from './ModalLayout.module.css'
 

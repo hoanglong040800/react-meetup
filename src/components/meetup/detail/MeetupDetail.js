@@ -18,6 +18,7 @@ export default function MeetupDetail({
   toggleFav,
   onClose,
   onDelete,
+  onEdit,
 }) {
   return (
     <div className={classes.root}>
@@ -42,7 +43,7 @@ export default function MeetupDetail({
           </div>
 
           <Box display="flex" flexDirection="column">
-            <IconButton color="primary">
+            <IconButton color="primary" onClick={onEdit}>
               <EditOutlined fontSize="small" />
             </IconButton>
 

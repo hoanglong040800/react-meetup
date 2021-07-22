@@ -1,16 +1,15 @@
 import { useState } from 'react'
 
-// components
-import classes from './AddMeetup.module.css'
+import classes from './EditMeetup.module.css'
 import FormLayout from 'layout/form/FormLayout'
 
-export default function AddMeetup({ onSubmit }) {
+export default function EditMeetup({ item, onSubmit }) {
   const [input, setInput] = useState({
-    title: '',
-    datetime: '',
-    address: '',
-    imageUrl: '',
-    description: '',
+    title: item.title,
+    datetime: item.datetime,
+    address: item.address,
+    imageUrl: item.imageUrl,
+    description: item.description,
   })
 
   function changeHandler(e) {
@@ -27,7 +26,7 @@ export default function AddMeetup({ onSubmit }) {
   return (
     <FormLayout>
       <form className={classes.form} onSubmit={submitHandler}>
-        <h3>New Meetup</h3>
+        <h3>Edit Meetup</h3>
 
         <div className={classes.control}>
           <label htmlFor="title">Title</label>
@@ -85,7 +84,7 @@ export default function AddMeetup({ onSubmit }) {
         </div>
 
         <div className={classes.actions}>
-          <button>Add</button>
+          <button>Edit</button>
         </div>
       </form>
     </FormLayout>

@@ -6,7 +6,7 @@ import MeetupList from 'components/meetup/list/MeetupList'
 import AddMeetup from 'components/meetup/add/AddMeetup'
 import ModalLayout from 'layout/modal/ModalLayout'
 
-import { allMeetup, addMeetup, deleteMeetup } from 'api/meetup-api'
+import { allMeetup, addMeetup, deleteMeetup, editMeetup } from 'api/meetup-api'
 
 export default function AllMeetupPage() {
   const [open, setOpen] = useState(false)
@@ -33,6 +33,11 @@ export default function AllMeetupPage() {
     fetchAllMeetup()
   }
 
+  async function editMeetupHandler(id, input) {
+    await editMeetup(id, input)
+    fetchAllMeetup()
+  }
+
   // modal
   function openHandler() {
     setOpen(true)
@@ -55,7 +60,7 @@ export default function AllMeetupPage() {
       </Box>
 
       {meetupList ? (
-        <MeetupList list={meetupList} onDelete={deleteMeetupHandler} />
+        <MeetupList list={meetupList} onDelete={deleteMeetupHandler} onEdit={editMeetupHandler} />
       ) : (
         <p>You have no meetup</p>
       )}
