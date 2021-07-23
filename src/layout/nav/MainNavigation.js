@@ -26,6 +26,10 @@ export default function MainNavigation() {
             <Link to="/todo" className={classes.link}>
               Todo
             </Link>
+
+            <Link to="/about" className={classes.link}>
+              About
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>
