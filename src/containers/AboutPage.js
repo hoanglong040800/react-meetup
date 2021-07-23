@@ -8,7 +8,7 @@ export default function About() {
           About Project
         </Typography>
         <p>
-          Website helps manageing your meetups easier only on one page. Your
+          Website helps managing your meetups easier only on one page. Your
           meetup can be add, observe in detail, edit or delete. Especially,
           favorite is an awesome feature where you can save your important
           meetups and toggle <b> Favorite Button </b> to see them.
@@ -36,7 +36,7 @@ export default function About() {
           About Me
         </Typography>
 
-        <p>I'm a senior student at University of Information and Technology</p>
+        <p>My name is Tran Hoang Long. I'm a senior student at University of Information and Technology in VietNam</p>
 
         <h4>Contact</h4>
         <ul>
