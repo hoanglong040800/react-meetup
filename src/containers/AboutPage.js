@@ -23,6 +23,7 @@ export default function About() {
             <a
               target="_blank"
               href="https://github.com/hoanglong040800/react-meetup"
+              rel="noreferrer"
             >
               hoanglong040800/react-meetup
             </a>
@@ -49,7 +50,11 @@ export default function About() {
 
           <li>
             See all my awesome projects at:{' '}
-            <a target="_blank" href="https://github.com/hoanglong040800">
+            <a
+              target="_blank"
+              href="https://github.com/hoanglong040800"
+              rel="noreferrer"
+            >
               github.com/hoanglong040800
             </a>
           </li>
