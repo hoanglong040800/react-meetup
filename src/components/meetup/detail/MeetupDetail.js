@@ -26,7 +26,7 @@ export default function MeetupDetail({
         <img src={item.imageUrl} alt={item.title} />
 
         <IconButton className={classes.close} onClick={onClose}>
-          <Clear fontSize="small" color="#fff" />
+          <Clear fontSize="small" />
         </IconButton>
       </div>
 

@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { IconButton } from '@material-ui/core'
+import { IconButton, Grid } from '@material-ui/core'
 import { Star, StarBorder, Clear, EditOutlined } from '@material-ui/icons'
 
 import classes from './MeetupItem.module.css'
@@ -66,56 +66,58 @@ export default function MeetupItem({ item, onDelete, onEdit }) {
 
   return (
     <>
-      <div className={`${classes.item} fade-in-bottom`} onClick={openHandler}>
-        <div className={classes.layout}>
-          <div className={classes.image}>
-            <img src={item.imageUrl} alt={item.title} />
-          </div>
-
-          <div className={classes.info}>
-            <div className={classes.content}>
-              <div className={classes.title}>
-                <h3>{item.title}</h3>
-
-                <div className={classes.sideAction}>
-                  <IconButton
-                    color="secondary"
-                    className={classes.hideIcon}
-                    onClick={e => {
-                      e.stopPropagation()
-                      delOpenHandler()
-                    }}
-                  >
-                    <Clear fontSize="small" />
-                  </IconButton>
-
-                  <IconButton
-                    color="primary"
-                    className={classes.hideIcon}
-                    onClick={e => {
-                      e.stopPropagation()
-                      editOpenHandler()
-                    }}
-                  >
-                    <EditOutlined fontSize="small" />
-                  </IconButton>
-                </div>
-              </div>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+        <div className={`${classes.item} fade-in-bottom`} onClick={openHandler}>
+          <div className={classes.layout}>
+            <div className={classes.image}>
+              <img src={item.imageUrl} alt={item.title} />
             </div>
 
-            <div className={classes.actions}>
-              <address>{item.datetime}</address>
+            <div className={classes.info}>
+              <div className={classes.content}>
+                <div className={classes.title}>
+                  <h3>{item.title}</h3>
 
-              <IconButton
-                className={isFav ? classes.icon : classes.hideIcon}
-                onClick={toggleFavHandler}
-              >
-                {isFav ? <Star color="primary" /> : <StarBorder />}
-              </IconButton>
+                  <div className={classes.sideAction}>
+                    <IconButton
+                      color="secondary"
+                      className={classes.hideIcon}
+                      onClick={e => {
+                        e.stopPropagation()
+                        delOpenHandler()
+                      }}
+                    >
+                      <Clear fontSize="small" />
+                    </IconButton>
+
+                    <IconButton
+                      color="primary"
+                      className={classes.hideIcon}
+                      onClick={e => {
+                        e.stopPropagation()
+                        editOpenHandler()
+                      }}
+                    >
+                      <EditOutlined fontSize="small" />
+                    </IconButton>
+                  </div>
+                </div>
+              </div>
+
+              <div className={classes.actions}>
+                <address>{item.datetime}</address>
+
+                <IconButton
+                  className={isFav ? classes.icon : classes.hideIcon}
+                  onClick={toggleFavHandler}
+                >
+                  {isFav ? <Star color="primary" /> : <StarBorder />}
+                </IconButton>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Grid>
 
       {open && (
         <ModalLayout open={open} onClose={closeHandler}>

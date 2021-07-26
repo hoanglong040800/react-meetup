@@ -1,12 +1,18 @@
-import MeetupItem from '../item/MeetupItem'
-import classes from './MeetupList.module.css'
+import { Grid } from '@material-ui/core'
 
-export default function MeetupList({list, onDelete, onEdit}) {
+import MeetupItem from '../item/MeetupItem'
+
+export default function MeetupList({ list, onDelete, onEdit }) {
   return (
-    <div className={classes.list}>
+    <Grid container spacing={3}>
       {list.map(item => (
-        <MeetupItem key={item.id} item={item} onDelete={onDelete} onEdit={onEdit}/>
+        <MeetupItem
+          key={item.id}
+          item={item}
+          onDelete={onDelete}
+          onEdit={onEdit}
+        />
       ))}
-    </div>
+    </Grid>
   )
 }
